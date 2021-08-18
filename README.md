@@ -105,3 +105,5 @@ Then, from within your project folder:
 npm run build
 surge public my-project.surge.sh
 ```
+![image](https://user-images.githubusercontent.com/46398938/129957340-01c13df3-1e80-4433-9e0f-b25601c7152c.png)
+
