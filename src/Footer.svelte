@@ -68,4 +68,24 @@
     p{
         color:#656275;
     }
+
+    @media screen and (max-width: 1000px) {
+        .footer-Container{
+            display: flex;
+            flex-direction: column-reverse;
+            
+        }
+        .first-footer{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-image{
+            padding-top: 2rem;
+            align-self:center;
+            width: 70%;
+
+        }
+    }
+
 </style>

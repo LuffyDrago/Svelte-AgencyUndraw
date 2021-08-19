@@ -177,4 +177,12 @@
     }
 }
 
+
+@media screen and (max-width: 1000px) {
+        .Testimonial{
+            overflow-x: hidden;
+            padding-bottom: 3rem;
+        }
+    }
+
 </style>
