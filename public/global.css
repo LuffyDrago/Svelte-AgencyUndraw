@@ -8,17 +8,21 @@
 html {
     font-family: Libre Baskerville;
     overflow-x: hidden;
+    /* margin-left: 5rem; */
 }
 
 a {
     text-decoration: none;
 }
 
-@media screen and (max-width: 1360px) {
-    .description {
-        flex-direction: column;
+@media screen and (max-width: 1000px) {
+    .whole {
+        padding: 2rem;
     }
-    .image-sector {
-        width: 50%;
+    footer {
+        padding: 2rem;
+    }
+    .Testimonial {
+        overflow-x: hidden;
     }
 }

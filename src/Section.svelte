@@ -277,4 +277,49 @@
     /* .titlebrand2{
         font-size: 1rem;
     } */
+
+    @media screen and (max-width: 1000px) {
+        .whole{
+            overflow-x: hidden;
+        }
+        .description{
+            display: flex;
+            flex-direction: column;
+            margin:0;
+        }
+        .image-sector{
+            padding-top: 1rem;
+            align-self:center;
+        }
+
+        .branding-sect{
+            display: flex;
+            flex-direction: column;
+        }
+        .brand-title{
+            font-size: 0.75rem;
+        }
+        .brand-images{
+            padding-top: 1rem;
+            align-self:center;
+            width:100%;
+        }
+
+        .user-experience{
+            padding-top: 2rem;
+            display:flex;
+            flex-direction: column-reverse;
+        }
+
+        .usersection-images{
+            width:100%;
+            padding-top: 2rem;
+            align-self:center;
+        }
+        
+    }
+
+
+
+
 </style>
