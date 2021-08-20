@@ -1,3 +1,10 @@
+https://awesome-hugle-8e6e4f.netlify.app/
+
+
+https://dribbble.com/shots/9130892-Minimal-Design-Agency/attachments/1188519?mode=media
+
+
+
 *Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
 
 ---
