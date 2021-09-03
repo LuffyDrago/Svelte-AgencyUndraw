@@ -133,6 +133,7 @@
     .whole{
         max-width: 1980px;
         margin: auto;
+        padding-top: 2rem;
     }
     .description{
         display:flex;

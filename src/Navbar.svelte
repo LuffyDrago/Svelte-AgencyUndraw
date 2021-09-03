@@ -1,153 +1,198 @@
-    <body>
-        <header>
-            <a class="logo" href="/">DesignA.</a>
-            <nav>
-                <ul class="nav__links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/">About</a></li>
-                    <li><a href="/">Blog</a></li>
-                    <li><a href="/">Portflio</a></li>
-                    <li><a href="/">Services</a></li>
-                </ul>
-            </nav>
-            <a class="cta" href="/">Contact Us</a>
-            <p class="menu cta">Menu</p>
-        </header>
-        <div class="overlay">
-            <!-- <a class="close">&times;</a> -->
-            <div class="overlay__content">
-                <a href="/">Services</a>
-                <a href="/">Projects</a>
-                <a href="/">About</a>
-            </div>
-        </div>
-       
-    </body>
+
+<script>
+  import { onMount } from "svelte";
+
+  // Show mobile icon and display menu
+  let showMobileMenu = false;
+
+  // List of navigation items
+  const navItems = [
+    { label: "DesignA.", href: "#" },
+    { label: "Home", href: "#" },
+    { label: "About", href: "#" },
+    { label: "Blog", href: "#" },
+    { label: "Portfolio", href: "#" },
+    { label: "Services", href: "#" },
+    { label:" Contact Us", href: "#" },
+    
+  ];
+
+  // Mobile menu click event handler
+  const handleMobileIconClick = () => (showMobileMenu = !showMobileMenu);
+
+  // Media match query handler
+  const mediaQueryHandler = e => {
+    // Reset mobile state
+    if (!e.matches) {
+      showMobileMenu = false;
+    }
+  };
+
+  // Attach media query listener on mount hook
+  onMount(() => {
+    const mediaListener = window.matchMedia("(max-width: 767px)");
+
+    mediaListener.addListener(mediaQueryHandler);
+  });
+</script>
+
+<nav>
+  <div class="inner">
+    <div on:click={handleMobileIconClick} class={`mobile-icon${showMobileMenu ? ' active' : ''}`}>
+      <div class="middle-line"></div>
+    </div>
+    <ul class={`navbar-list${showMobileMenu ? ' mobile' : ''}`}>
+      {#each navItems as item}
+        <li>
+          <a href={item.href}>{item.label}</a>
+        
+        </li>
+      {/each}
+    </ul>
+  </div>
+</nav>
+
 <style>
-   
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px 10%;
-  /* background-color: #000; */
-}
-
-
-.logo {
-  cursor: pointer;
-}
-
-.nav__links a,
-.cta,
-.overlay__content a {
-  font-size: 12px;
-  font-weight: 500;
-  color: #8c8c8c;
-  text-decoration: none;
-}
-
-.nav__links {
-  list-style: none;
-  display: flex;
-}
-
-.nav__links li {
-  padding: 0px 20px;
-}
-
-.nav__links li a {
-  transition: color 0.3s ease 0s;
-}
-
-.nav__links li a:hover {
-  color: #000;
-}
-
-.cta {
-  padding: 10px 20px;
-  background-color: #eeedf2;
-  color: #606182;
-  border: none;
-  text-transform: uppercase;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: background-color 0.3s ease 0s;
-}
-
-.cta:hover {
-  background-color: #565786;
-  color: #fff;
-}
-
-/* Mobile Nav */
-
-.menu {
-  display: none;
-}
-
-.overlay {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  background-color: #24252a;
-  overflow-x: hidden;
-  transition: width 0.5s ease 0s;
-}
-
-/* .overlay--active {
-  width: 100%;
-} */
-
-.overlay__content {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.overlay a {
-  padding: 15px;
-  font-size: 36px;
-  display: block;
-  transition: color 0.3s ease 0s;
-}
-
-.overlay a:hover,
-.overlay a:focus {
-  color: #0088a9;
-}
-/* .overlay .close {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-  color: #edf0f1;
-} */
-
-@media screen and (max-height: 450px) {
-  .overlay a {
-    font-size: 20px;
+  nav {
+    background-color: #565786;
+    /* background-color: #fff; */
+    height: 45px;
+    
   }
-  /* .overlay .close {
-    font-size: 40px;
-    top: 15px;
-    right: 35px;
-  } */
-}
+ 
 
-@media only screen and (max-width: 800px) {
-  .nav__links,
-  .cta {
+  .inner {
+    max-width: 980px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: auto;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .mobile-icon {
+    width: 25px;
+    height: 14px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .mobile-icon:after,
+  .mobile-icon:before,
+  .middle-line {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transition: all 0.4s;
+    transform-origin: center;
+  }
+
+  .mobile-icon:before,
+  .middle-line {
+    top: 0;
+  }
+
+  .mobile-icon:after,
+  .middle-line {
+    bottom: 0;
+  }
+
+  .mobile-icon:before {
+    width: 66%;
+  }
+
+  .mobile-icon:after {
+    width: 33%;
+  }
+
+  .middle-line {
+    margin: auto;
+  }
+
+  .mobile-icon:hover:before,
+  .mobile-icon:hover:after,
+  .mobile-icon.active:before,
+  .mobile-icon.active:after,
+  .mobile-icon.active .middle-line {
+    width: 100%;
+  }
+
+  .mobile-icon.active:before,
+  .mobile-icon.active:after {
+    top: 50%;
+    transform: rotate(-45deg);
+  }
+
+  .mobile-icon.active .middle-line {
+    transform: rotate(45deg);
+  }
+
+  .navbar-list {
     display: none;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0 40px;
   }
-  .menu {
-    display: initial;
-  }
-}
 
+  .navbar-list.mobile {
+    background-color: #565786;
+    position: fixed;
+    display: block;
+    height: calc(100% - 45px);
+    bottom: 0;
+    left: 0;
+  }
+
+  .navbar-list li {
+    list-style-type: none;
+    position: relative;
+  }
+
+  .navbar-list li:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #424245;
+  }
+
+  .navbar-list a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    height: 45px;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 13px;
+  }
+  .navbar-list a:hover {
+    color: black;
+    text-decoration: none;
+    display: flex;
+    height: 45px;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 13px;
+  }
+  @media only screen and (min-width: 767px) {
+    .mobile-icon {
+      display: none;
+    }
+
+    .navbar-list {
+      display: flex;
+      padding: 0;
+    }
+
+    .navbar-list a {
+      display: inline-flex;
+    }
+  }
 </style>
